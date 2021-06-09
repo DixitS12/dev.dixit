@@ -1,0 +1,92 @@
+{
+  "columns": [
+    {
+      "component": "input",
+      "name": "case_id",
+      "label": "Case ID",
+      "type": "text",
+      "required": true,
+      "id": "01"
+    },
+    {
+      "component": "input",
+      "name": "case_type",
+      "label": "Case Type",
+      "type": "text",
+      "required": true,
+      "id": "02"
+    },
+    {
+      "component": "input",
+      "name": "title",
+      "label": "Title",
+      "type": "text",
+      "required": true,
+      "id": "03"
+    },
+    {
+      "component": "date",
+      "name": "due_date",
+      "label": "Due Date",
+      "type": "date",
+      "required": true,
+      "id": "04"
+    },
+    {
+      "component": "select",
+      "name": "status",
+      "label": "Status",
+      "type": "select",
+      "required": true,
+      "id": "04"
+    },
+    {
+      "component": "input",
+      "name": "owned_by",
+      "label": "Owned By",
+      "type": "text",
+      "required": true,
+      "id": "05"
+    },
+    {
+      "component": "input",
+      "name": "assign_to",
+      "label": "Assign To",
+      "type": "text",
+      "required": true,
+      "id": "05"
+    },
+    {
+      "component": "date",
+      "name": "created_date",
+      "label": "Created Date",
+      "type": "date",
+      "required": true,
+      "id": "04"
+    },
+    {
+      "component": "input",
+      "name": "created_by",
+      "label": "Created By",
+      "type": "text",
+      "required": true,
+      "id": "05"
+    },
+    {
+      "component": "input",
+      "name": "modified",
+      "label": "Modified",
+      "type": "text",
+      "required": true,
+      "id": "05"
+    },
+    {
+      "component": "input",
+      "name": "modify_by",
+      "label": "Modify By",
+      "type": "text",
+      "required": true,
+      "id": "05"
+    }
+  ]
+}
