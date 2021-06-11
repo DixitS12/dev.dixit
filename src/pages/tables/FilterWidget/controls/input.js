@@ -11,7 +11,7 @@ export default function CustomTextField(props) {
             name={String(props.field.name ? props.field.name : 'name')}
             id={String(props.field.id ? props.field.id : 0)}
             label={props.field.label ? props.field.label : 'label'}
-            required={required ? required : true}
+            required={false}
             fullWidth={true}
             type={props.field.type ? props.field.type : 'text'}
             placeholder={props.field.label}
