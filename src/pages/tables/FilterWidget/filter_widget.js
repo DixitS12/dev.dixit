@@ -10,7 +10,7 @@ import {
   TextField,
   Typography
 } from "@material-ui/core";
-import { Search,FilterList } from '@material-ui/icons';
+import { Search, FilterList } from '@material-ui/icons';
 import Select from "@material-ui/core/Select";
 import useStyles from "../styles";
 import * as notification from "./toast";
@@ -61,17 +61,17 @@ export default function FilterWidget() {
         return (
           <CustomTextField field={field} />
         );
-        case "select":
-          return (
-            <CustomSelect field={field} />
-          );
-        case "date":
-          return (
-            <MaterialUIPickers field={field}/>
-          );
+      case "select":
+        return (
+          <CustomSelect field={field} />
+        );
+      case "date":
+        return (
+          <MaterialUIPickers field={field} />
+        );
       default: return (
-        <Typography variant="h6"  gutterBottom>
-           {field.component} control not bind.
+        <Typography variant="h6" gutterBottom>
+          {field.component} control not bind.
         </Typography>
       );
     }
@@ -79,13 +79,13 @@ export default function FilterWidget() {
 
   return (
     <React.Fragment>
-        <Tooltip title="Filter Search"><span> <IconButton
+      <Tooltip title="Filter Search"><span> <IconButton
         aria-label="filter"
         onClick={handleOpen}
       >
         <FilterList style={{ cursor: "pointer" }} />
       </IconButton></span></Tooltip>
-     
+
 
       <Popover
         anchorOrigin={{
@@ -119,11 +119,20 @@ export default function FilterWidget() {
             type="reset"
             variant="contained"
             color="secondary"
+            className={classes.mr_one}
+          >
+            Reset
+              </Button>
+          <Button
+            type="reset"
+            variant="contained"
+            color="danger"
+            onClick={handleClose}
           >
             Cancel
               </Button>
         </form>
       </Popover>
-      </React.Fragment>
+    </React.Fragment>
   );
 }
