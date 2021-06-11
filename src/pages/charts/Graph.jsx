@@ -16,6 +16,7 @@ import {
   Bar,
   Cell,
 } from "recharts";
+import BootStrapGrid from "../tables/bootstrap_lazyloadinggrid";
 
 const data01 = [
   { name: "Group A", value: 400 },
@@ -221,211 +222,236 @@ export default class GraphCom extends PureComponent {
   render() {
     return (
       //   <ResponsiveContainer width="100%" height="100%">
-      <Card>
-        <CardHeader
-          title={
-            <Typography  style={{color:"red"}}
-              style={{ textAlign: "center" }}
-              variant="h1"
-              component="h1"
-              gutterBottom
-              color="primary"
-            >
-              Graph Components
-            </Typography>
-          }
-        ></CardHeader>
+      <>
+        <Card>
+          <CardHeader
+            title={
+              <Typography
+                style={{ color: "red" }}
+                style={{ textAlign: "center" }}
+                variant="h1"
+                component="h1"
+                gutterBottom
+                color="primary"
+              >
+                Graph Components
+              </Typography>
+            }
+          ></CardHeader>
 
-        <Grid container spacing={3}>
-          <Grid item lg={12} md={12} xs={12} sm={12}>
-            <div className="grpah">
-              <Grid container spacing={2}>
-                <Grid item lg={4} md={4} xs={12} sm={12}>
-                  <Typography
-                    style={{ textAlign: "center" }}
-                    variant="h5"
-                    component="h5"
-                  >
-                    Pie Chart
-                  </Typography>
-                  <PieChart
-                    width={400}
-                    height={400}
-                    style={{ marginLeft: "auto", marginRight: "auto" }}
-                  >
-                    <Pie
-                      data={data01}
-                      dataKey="value"
-                      cx="50%"
-                      cy="50%"
-                      outerRadius={60}
-                      fill="#8884d8"
-                    />
-                    <Pie
-                      data={data02}
-                      dataKey="value"
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={70}
-                      outerRadius={90}
-                      fill="#82ca9d"
-                      label
-                    />
-                  </PieChart>
-                </Grid>
-                <Grid item lg={4} md={4} xs={12} sm={12}>
-                  <Typography
-                    style={{ textAlign: "center" }}
-                    variant="h5"
-                    component="h5"
-                  >
-                    Line Chart
-                  </Typography>
-                  <LineChart
-                    width={500}
-                    height={400}
-                    style={{ marginLeft: "auto", marginRight: "auto" }}
-                    data={dataLineChart}
-                    margin={{
-                      top: 5,
-                      right: 30,
-                      left: 20,
-                      bottom: 5,
-                    }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Line
-                      type="monotone"
-                      dataKey="pv"
-                      stroke="#8884d8"
-                      activeDot={{ r: 8 }}
-                    />
-                    <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-                  </LineChart>
-                </Grid>
+          <Grid container spacing={3}>
+            <Grid item lg={12} md={12} xs={12} sm={12}>
+              <div className="grpah">
+                <Grid container spacing={2}>
+                  <Grid item lg={4} md={4} xs={12} sm={12}>
+                    <Typography
+                      style={{ textAlign: "center" }}
+                      variant="h5"
+                      component="h5"
+                    >
+                      Pie Chart
+                    </Typography>
+                    <PieChart
+                      width={400}
+                      height={400}
+                      style={{ marginLeft: "auto", marginRight: "auto" }}
+                    >
+                      <Pie
+                        data={data01}
+                        dataKey="value"
+                        cx="50%"
+                        cy="50%"
+                        outerRadius={60}
+                        fill="#8884d8"
+                      />
+                      <Pie
+                        data={data02}
+                        dataKey="value"
+                        cx="50%"
+                        cy="50%"
+                        innerRadius={70}
+                        outerRadius={90}
+                        fill="#82ca9d"
+                        label
+                      />
+                    </PieChart>
+                  </Grid>
+                  <Grid item lg={4} md={4} xs={12} sm={12}>
+                    <Typography
+                      style={{ textAlign: "center" }}
+                      variant="h5"
+                      component="h5"
+                    >
+                      Line Chart
+                    </Typography>
+                    <LineChart
+                      width={500}
+                      height={400}
+                      style={{ marginLeft: "auto", marginRight: "auto" }}
+                      data={dataLineChart}
+                      margin={{
+                        top: 5,
+                        right: 30,
+                        left: 20,
+                        bottom: 5,
+                      }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Line
+                        type="monotone"
+                        dataKey="pv"
+                        stroke="#8884d8"
+                        activeDot={{ r: 8 }}
+                      />
+                      <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+                    </LineChart>
+                  </Grid>
 
-                <Grid item lg={4} md={4} xs={12} sm={12}>
-                  <Typography
-                    style={{ textAlign: "center" }}
-                    variant="h5"
-                    component="h5"
-                  >
-                    Area Chart
-                  </Typography>
-                  <AreaChart
-                    width={500}
-                    height={400}
-                    style={{ marginLeft: "auto", marginRight: "auto" }}
-                    data={dataAreaChart}
-                    margin={{
-                      top: 10,
-                      right: 30,
-                      left: 0,
-                      bottom: 0,
-                    }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Area
-                      type="monotone"
-                      dataKey="uv"
-                      stackId="1"
-                      stroke="#8884d8"
-                      fill="#8884d8"
-                    />
-                    <Area
-                      type="monotone"
-                      dataKey="pv"
-                      stackId="1"
-                      stroke="#82ca9d"
-                      fill="#82ca9d"
-                    />
-                    <Area
-                      type="monotone"
-                      dataKey="amt"
-                      stackId="1"
-                      stroke="#ffc658"
-                      fill="#ffc658"
-                    />
-                  </AreaChart>
+                  <Grid item lg={4} md={4} xs={12} sm={12}>
+                    <Typography
+                      style={{ textAlign: "center" }}
+                      variant="h5"
+                      component="h5"
+                    >
+                      Area Chart
+                    </Typography>
+                    <AreaChart
+                      width={500}
+                      height={400}
+                      style={{ marginLeft: "auto", marginRight: "auto" }}
+                      data={dataAreaChart}
+                      margin={{
+                        top: 10,
+                        right: 30,
+                        left: 0,
+                        bottom: 0,
+                      }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Area
+                        type="monotone"
+                        dataKey="uv"
+                        stackId="1"
+                        stroke="#8884d8"
+                        fill="#8884d8"
+                      />
+                      <Area
+                        type="monotone"
+                        dataKey="pv"
+                        stackId="1"
+                        stroke="#82ca9d"
+                        fill="#82ca9d"
+                      />
+                      <Area
+                        type="monotone"
+                        dataKey="amt"
+                        stackId="1"
+                        stroke="#ffc658"
+                        fill="#ffc658"
+                      />
+                    </AreaChart>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </div>
+              </div>
+            </Grid>
           </Grid>
-        </Grid>
-        <Grid container spacing={3}>
-          <Grid item lg={12} md={12} xs={12} sm={12}>
-            <div className="grpah">
-              <Grid container spacing={2}>
-                <Grid item lg={6} md={6} xs={12} sm={12}>
-                  <Typography
-                    style={{ textAlign: "center" }}
-                    variant="h5"
-                    component="h5"
-                  >
-                    Bar Chart
-                  </Typography>
-                  <BarChart
-                    width={700}
-                    height={400}
-                    style={{ marginLeft: "auto", marginRight: "auto" }}
-                    data={dataSimpleBarChart}
-                    margin={{
-                      top: 5,
-                      right: 30,
-                      left: 20,
-                      bottom: 5,
-                    }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="pv" fill="#8884d8" />
-                    <Bar dataKey="uv" fill="#82ca9d" />
-                  </BarChart>
+          <Grid container spacing={3}>
+            <Grid item lg={12} md={12} xs={12} sm={12}>
+              <div className="grpah">
+                <Grid container spacing={2}>
+                  <Grid item lg={6} md={6} xs={12} sm={12}>
+                    <Typography
+                      style={{ textAlign: "center" }}
+                      variant="h5"
+                      component="h5"
+                    >
+                      Bar Chart
+                    </Typography>
+                    <BarChart
+                      width={700}
+                      height={400}
+                      style={{ marginLeft: "auto", marginRight: "auto" }}
+                      data={dataSimpleBarChart}
+                      margin={{
+                        top: 5,
+                        right: 30,
+                        left: 20,
+                        bottom: 5,
+                      }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Bar dataKey="pv" fill="#8884d8" />
+                      <Bar dataKey="uv" fill="#82ca9d" />
+                    </BarChart>
+                  </Grid>
+                  <Grid item lg={6} md={6} xs={12} sm={12}>
+                    <Typography
+                      style={{ textAlign: "center" }}
+                      variant="h5"
+                      component="h5"
+                    >
+                      Stacked Bar Chart
+                    </Typography>
+                    <BarChart
+                      width={700}
+                      height={400}
+                      style={{ marginLeft: "auto", marginRight: "auto" }}
+                      data={dataStackBarChart}
+                      margin={{
+                        top: 20,
+                        right: 30,
+                        left: 20,
+                        bottom: 5,
+                      }}
+                    >
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Legend />
+                      <Bar dataKey="pv" stackId="a" fill="#8884d8" />
+                      <Bar dataKey="uv" stackId="a" fill="#82ca9d" />
+                    </BarChart>
+                  </Grid>
                 </Grid>
-                <Grid item lg={6} md={6} xs={12} sm={12}>
-                  <Typography
-                    style={{ textAlign: "center" }}
-                    variant="h5"
-                    component="h5"
-                  >
-                    Stacked Bar Chart
-                  </Typography>
-                  <BarChart
-                    width={700}
-                    height={400}
-                    style={{ marginLeft: "auto", marginRight: "auto" }}
-                    data={dataStackBarChart}
-                    margin={{
-                      top: 20,
-                      right: 30,
-                      left: 20,
-                      bottom: 5,
-                    }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="pv" stackId="a" fill="#8884d8" />
-                    <Bar dataKey="uv" stackId="a" fill="#82ca9d" />
-                  </BarChart>
-                </Grid>
-              </Grid>
-            </div>
+              </div>
+            </Grid>
           </Grid>
-        </Grid>
-      </Card>
+        </Card>
+
+        <Card style={{ marginTop: 20 }}>
+          <CardHeader
+            title={
+              <Typography
+                style={{ color: "red" }}
+                style={{ textAlign: "center" }}
+                variant="h1"
+                component="h1"
+                gutterBottom
+                color="primary"
+              >
+                Lazy loading Components
+              </Typography>
+            }
+          ></CardHeader>
+          {/* <Grid container style={{ marginBottom: 40 }}>
+            <Grid item lg={12} md={12} xs={12} sm={12}></Grid>
+            <BootStrapGrid></BootStrapGrid>
+          </Grid> */}
+          <BootStrapGrid></BootStrapGrid>
+        </Card>
+      </>
     );
   }
 }
