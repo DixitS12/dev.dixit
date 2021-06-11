@@ -1,17 +1,17 @@
 import { makeStyles } from "@material-ui/styles";
 
-export default makeStyles(theme => ({
+export default makeStyles((theme) => ({
   widgetWrapper: {
     display: "flex",
     minHeight: "100%",
   },
- 
+
   widgetRoot: {
     boxShadow: theme.customShadows.widget,
   },
   widgetBody: {
     padding: theme.spacing(3),
-    width: "27em"
+    width: "27em",
   },
   noPadding: {
     padding: 0,
@@ -35,12 +35,16 @@ export default makeStyles(theme => ({
     },
   },
   noWidgetShadow: {
-    boxShadow: 'none'
+    boxShadow: "none",
   },
   mb_one: {
-    marginBottom: '1rem',
+    marginBottom: "1rem",
   },
   mr_one: {
-    marginRight: '1rem',
-  }
+    marginRight: "1rem",
+  },
+  table_scroll: {
+    height: 500,
+    overflow: "scroll",
+  },
 }));
