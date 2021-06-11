@@ -78,7 +78,7 @@ export default function FilterWidget() {
   }
 
   return (
-    <div className="page" id="people-filter"  >
+    <React.Fragment>
         <Tooltip title="Filter Search"><span> <IconButton
         aria-label="filter"
         onClick={handleOpen}
@@ -124,6 +124,6 @@ export default function FilterWidget() {
               </Button>
         </form>
       </Popover>
-    </div>
+      </React.Fragment>
   );
 }

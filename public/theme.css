@@ -149,6 +149,8 @@ body {
 .react-bootstrap-table table {
   table-layout: fixed;
   color: #6b6b73 !important;
+  table-layout: initial !important;
+  color: #6b6b73 !important;
 }
 .table > thead {
   vertical-align: bottom;
