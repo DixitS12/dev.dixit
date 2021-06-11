@@ -6,6 +6,7 @@ import {
   MenuItem,
   Typography,
 } from "@material-ui/core";
+import Tooltip from '@material-ui/core/Tooltip';
 import ViewColumnIcon from '@material-ui/icons/ViewColumn';
 import * as notification from "../toast";
 import Checkbox from '@material-ui/core/Checkbox';
@@ -26,28 +27,24 @@ export default function WidgetColumnHide({
   }, [columns])
 
 
-  console.log("----------props",props)
-  
+
   const handleSelectedAction = (dataField) => {
-    console.log("----------dataField",dataField)
-  
-    props.changeHidden(dataField);
+    props.onColumnToggle(dataField);
   };
   return (
 
 
     <React.Fragment>
 
-      <IconButton
-        color="primary"
-        classes={{ root: classes.moreButton }}
-        aria-owns="widget-menu"
-        aria-haspopup="true"
-        onClick={() => setMoreMenuOpen(true)}
-        buttonRef={setMoreButtonRef}
-      >
-        <ViewColumnIcon />
-      </IconButton>
+      <Tooltip title="Hide/Show">
+        <IconButton aria-label="Hide/Show"
+       
+          onClick={() => setMoreMenuOpen(true)}
+          buttonRef={setMoreButtonRef}
+        >
+          <ViewColumnIcon />
+        </IconButton>
+      </Tooltip>
 
       <Menu
         id="widget-menu"

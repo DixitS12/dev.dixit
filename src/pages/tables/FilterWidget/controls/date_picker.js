@@ -9,7 +9,6 @@ import {
 import useStyles from "../../styles";
 export default function MaterialUIPickers(props) {
 
-    console.log('----props',props);
   // The first commit of Material-UI
   const [selectedDate, setSelectedDate] = React.useState(new Date());
   var classes = useStyles();

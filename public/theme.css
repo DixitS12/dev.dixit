@@ -146,7 +146,7 @@ html, body {
     border-color: #1BC5BD !important;
 }
 .react-bootstrap-table table {
-    table-layout: fixed;
+    table-layout: initial !important;
     color: #6b6b73 !important;
 }
 .table>thead {

@@ -5,7 +5,7 @@ export default makeStyles(theme => ({
     display: "flex",
     minHeight: "100%",
   },
- 
+
   widgetRoot: {
     boxShadow: theme.customShadows.widget,
   },
@@ -21,6 +21,7 @@ export default makeStyles(theme => ({
     flexDirection: "column",
     flexGrow: 1,
     overflow: "auto",
+    padding: theme.spacing(2),
   },
 
   moreButton: {
@@ -42,5 +43,16 @@ export default makeStyles(theme => ({
   },
   mr_one: {
     marginRight: '1rem',
-  }
+  },
+  //  Expand Collaps
+  expand: {
+    transform: "rotate(0deg)",
+    marginLeft: ".5rem",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest
+    })
+  },
+  expandOpen: {
+    transform: "rotate(180deg)"
+  },
 }));
