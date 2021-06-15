@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { IconButton, Paper,Tooltip,Collapse } from "@material-ui/core";
+import { IconButton, Paper, Tooltip, Collapse } from "@material-ui/core";
 import { Refresh, CloudDownload, Print, ExpandMore } from '@material-ui/icons';
 
 import clsx from "clsx";
@@ -16,8 +16,9 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import filterFactory, { textFilter, selectFilter } from 'react-bootstrap-table2-filter';
+import { products, init } from "./FilterWidget/data.json";
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
-
+import InfiniteScroll from "react-infinite-scroll-component";
 import useStyles from "./styles";
 import logo from "./image/011-boy-5.svg";
 export default function BootstrapTableGrid(props) {
@@ -30,13 +31,14 @@ export default function BootstrapTableGrid(props) {
     const [isSelectedRow, setSelectedRow] = React.useState([]);
     const [expanded, setExpanded] = React.useState(true);
     const { SearchBar, ClearSearchButton } = Search;
+    // const [columns, setcolumns] = React.useState(LazyLoadingColumns);
+    const [hasMore, sethasMore] = React.useState(true);
+    const [prod, setprod] = React.useState(init);
     const defaultSorted = [{
         dataField: 'CaseTypeName',
-        order: 'desc'
+        order: 'asc'
     }];
-    const defaultProps = {
-        loading: true
-      }
+
     const selectOptions = {
         'Acknowledgment': 'Acknowledgment',
         'Training': 'Training',
@@ -52,7 +54,7 @@ export default function BootstrapTableGrid(props) {
                 </IconButton></span></Tooltip>
         );
     };
-    
+
     const pagination = paginationFactory({
         page: 1,
         sizePerPage: 8,
@@ -71,7 +73,7 @@ export default function BootstrapTableGrid(props) {
             console.log('sizePerPage', sizePerPage);
         }
     });
-    
+
     const handleRefreshClick = () => {
         props.getCaseList();
     }
@@ -126,15 +128,15 @@ export default function BootstrapTableGrid(props) {
     function dateFormatter(cell, row) {
 
         return (
-            <div className="text-primary d-flex align-items-center ">
-                { row.CaseDue}
+            <div className="text-primary text-center">
+                { cell}
             </div>
         );
     }
     function ownernameFormatter(cell, row) {
 
         return (
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center px-2">
                 <div className="symbol-label">
                     <img className="" src={logo} alt="photo" />
                 </div>
@@ -154,27 +156,24 @@ export default function BootstrapTableGrid(props) {
             </div>
         );
     }
+    const fetchMoreData = () => {
+        var abc;
+        if (prod.length >= products.length) {
+            sethasMore(false);
+            console.log("end of page ", hasMore);
+            return;
+        } else {
+            abc = products.slice(prod.length, prod.length + 15);
 
+        }
+        setTimeout(() => {
+            setprod((prod) => prod.concat(abc));
+        }, 1500);
+    };
 
-    const products = [
-        { id: 1, CaseTypeName: 'Acknowledgment', CaseOwnerDisplayName: 'Vijay Prajapati', CaseCreatedDate: '2021-04-08T07:06:15.697', CaseDue: '08/31/2021' },
-        { id: 2, CaseTypeName: 'Training', CaseOwnerDisplayName: 'Dixit Solanki', CaseCreatedDate: '2021-04-08T07:06:15.697', CaseDue: '08/31/2021' },
-        { id: 3, CaseTypeName: 'Acknowledgment', CaseOwnerDisplayName: 'Vijay Prajapati', CaseCreatedDate: '2021-04-08T07:06:15.697', CaseDue: '08/31/2021' },
-        { id: 4, CaseTypeName: 'Training', CaseOwnerDisplayName: 'Dixit Solanki', CaseCreatedDate: '2021-04-08T07:06:15.697', CaseDue: '08/31/2021' },
-        { id: 5, CaseTypeName: 'Acknowledgment', CaseOwnerDisplayName: 'Vijay Prajapati', CaseCreatedDate: '2021-04-08T07:06:15.697', CaseDue: '08/31/2021' },
-        { id: 6, CaseTypeName: 'Training', CaseOwnerDisplayName: 'Dixit Solanki', CaseCreatedDate: '2021-04-08T07:06:15.697', CaseDue: '08/31/2021' },
-        { id: 7, CaseTypeName: 'Acknowledgment', CaseOwnerDisplayName: 'Vijay Prajapati', CaseCreatedDate: '2021-04-08T07:06:15.697', CaseDue: '08/31/2021' },
-        { id: 8, CaseTypeName: 'Training', CaseOwnerDisplayName: 'Dixit Solanki', CaseCreatedDate: '2021-04-08T07:06:15.697', CaseDue: '08/31/2021' },
-        { id: 9, CaseTypeName: 'Acknowledgment', CaseOwnerDisplayName: 'Vijay Prajapati', CaseCreatedDate: '2021-04-08T07:06:15.697', CaseDue: '08/31/2021' },
-        { id: 10, CaseTypeName: 'Training', CaseOwnerDisplayName: 'Dixit Solanki', CaseCreatedDate: '2021-04-08T07:06:15.697', CaseDue: '08/31/2021' },
-        { id: 11, CaseTypeName: 'Acknowledgment', CaseOwnerDisplayName: 'Vijay Prajapati', CaseCreatedDate: '2021-04-08T07:06:15.697', CaseDue: '08/31/2021' },
-        { id: 12, CaseTypeName: 'Training', CaseOwnerDisplayName: 'Dixit Solanki', CaseCreatedDate: '2021-04-08T07:06:15.697', CaseDue: '08/31/2021' },
-        { id: 13, CaseTypeName: 'Acknowledgment', CaseOwnerDisplayName: 'iDixit Solanki', CaseCreatedDate: '2021-04-08T07:06:15.697', CaseDue: '08/31/2021' },
-        { id: 14, CaseTypeName: 'Training', CaseOwnerDisplayName: 'Dixit Solanki', CaseCreatedDate: '2021-04-08T07:06:15.697', CaseDue: '08/31/2021' },
-        { id: 15, CaseTypeName: 'Acknowledgment', CaseOwnerDisplayName: 'Vijay Prajapati', CaseCreatedDate: '2021-04-08T07:06:15.697', CaseDue: '08/31/2021' }
-    ];
     const columns = [
         { dataField: 'id', text: 'Id', sort: true, align: 'center', headerAlign: 'center', align: 'center' },
+        
         {
             dataField: "CaseTypeName", text: "Case Type Name", sort: true, align: 'center', headerAlign: 'center',
             formatter: cell => selectOptions[cell],
@@ -184,13 +183,15 @@ export default function BootstrapTableGrid(props) {
             formatter: nameFormatter
         },
         {
-            dataField: "CaseOwnerDisplayName", text: "Owner Name", sort: true,
+            dataField: "CaseOwnerDisplayName", text: "Owner Name", headerAlign: 'center', sort: true,
             filter: textFilter(),
             formatter: ownernameFormatter
         },
-        { dataField: "CaseCreatedDate", text: "Created Date", sort: false },
+        { dataField: "CaseCreatedDate", text: "Created Date", headerAlign: 'center', sort: false,
+    
+        formatter: dateFormatter},
         {
-            dataField: "CaseDue", text: "Case Due", sort: false,
+            dataField: "CaseDue", text: "Case Due",headerAlign: 'center', sort: false,
             formatter: dateFormatter
 
         },
@@ -203,7 +204,7 @@ export default function BootstrapTableGrid(props) {
     ];
 
 
-  
+
 
     return (
         <>
@@ -213,83 +214,99 @@ export default function BootstrapTableGrid(props) {
                 handleClose={handleClose}
             ></CaseModel>
             <div className="ui-table react-bs-table" style={{ padding: '1rem' }}>
+                <Paper className={classes.paper}>
+                    <InfiniteScroll
+                        dataLength={prod.length}
+                        hasMore={hasMore}
+                        next={fetchMoreData}
+                        loader={<h6></h6>}
+                        height={800}
+                    // endMessage={
+                    //   <p style={{ textAlign: "center" }}>
+                    //     <b>Yay! You have seen it all</b>
+                    //   </p>
+                    // }
+                    >
+                        <ToolkitProvider
+                            bootstrap4
+                            keyField='id'
+                            data={prod}
+                            columns={columns}
+                            search
+                            columnToggle
+                            exportCSV={{
+                                fileName: 'dixit.csv',
+                                noAutoBOM: false,
+                                blobType: 'text/csv;charset=ansi'
+                            }}
+                        >
+                            {
+                                props => (
+                                    <>
+                                        <PageTitle title="User Case List" button={
 
-                <ToolkitProvider
-                    bootstrap4
-                    keyField='id'
-                    data={products}
-                    columns={columns}
-                    search
-                    columnToggle
-                    exportCSV={{
-                        fileName: 'dixit.csv',
-                        noAutoBOM: false,
-                        blobType: 'text/csv;charset=ansi'
-                    }}
-                >
-                    {
-                        props => (
-                            <Paper className={classes.paper}>
-                                <PageTitle title="User Case List" button={
+                                            <span>
 
-                                    <span>
-
-                                        <Widget 
-                                        isSelectedRow={isSelectedRow} 
-                                        isSelected={isSelected} />
-                                        <FilterWidget />
-                                        <CustomToggleList {...props.columnToggleProps} />
-                                        <Tooltip title="Refresh">
-                                            <IconButton aria-label="Refresh" onClick={handleRefreshClick}>
-                                                <Refresh />
-                                            </IconButton>
-                                        </Tooltip>
-                                        <ReactToPrint
-                                            trigger={() =>
-                                                <Tooltip title="Print">
-                                                    <IconButton aria-label="Print" >
-                                                        <Print />
+                                                <Widget
+                                                    isSelectedRow={isSelectedRow}
+                                                    isSelected={isSelected} />
+                                                <FilterWidget />
+                                                <CustomToggleList {...props.columnToggleProps} />
+                                                <Tooltip title="Refresh">
+                                                    <IconButton aria-label="Refresh" onClick={handleRefreshClick}>
+                                                        <Refresh />
                                                     </IconButton>
                                                 </Tooltip>
-                                            }
-                                            content={() => componentRef.current}
-                                        />
-                                        <MyExportCSV {...props.csvProps} />
-                                        <SearchBar  {...props.searchProps} />
-                                        <Tooltip title="Expand/Collaps">
-                                            <IconButton
-                                                className={clsx(classes.expand, {
-                                                    [classes.expandOpen]: expanded
-                                                })}
-                                                onClick={handleExpandClick}
-                                                aria-expanded={expanded}
-                                                aria-label="show more">
-                                                <ExpandMore />
-                                            </IconButton>
-                                        </Tooltip>
-                                    </span>
+                                                <ReactToPrint
+                                                    trigger={() =>
+                                                        <Tooltip title="Print">
+                                                            <IconButton aria-label="Print" >
+                                                                <Print />
+                                                            </IconButton>
+                                                        </Tooltip>
+                                                    }
+                                                    content={() => componentRef.current}
+                                                />
+                                                <MyExportCSV {...props.csvProps} />
+                                                <SearchBar  {...props.searchProps} />
+                                                <ClearSearchButton  {...props.searchProps} />
+                                                
+                                                <Tooltip title="Expand/Collaps">
+                                                    <IconButton
+                                                        className={clsx(classes.expand, {
+                                                            [classes.expandOpen]: expanded
+                                                        })}
+                                                        onClick={handleExpandClick}
+                                                        aria-expanded={expanded}
+                                                        aria-label="show more">
+                                                        <ExpandMore />
+                                                    </IconButton>
+                                                </Tooltip>
+                                            </span>
 
-                                } />
- 
-                                <Collapse in={expanded} timeout="auto" unmountOnExit>
-                                <hr />
-                                    <BootstrapTable ref={componentRef}
-                                        selectRow={selectRow}
-                                        defaultSorted={defaultSorted}
-                                        keyField='id'
-                                        hover
-                                        defaultProps ={defaultProps }
-                                        pagination={pagination}
-                                        filter={filterFactory()}
-                                        filterPosition="top"
-                                        {...props.baseProps}
-                                    />
-                                </Collapse>
-                            </Paper>
-                        )
-                    }
-                </ToolkitProvider>
+                                        } />
 
+                                        <Collapse in={expanded} timeout="auto" unmountOnExit>
+                                            <hr />
+
+                                            <BootstrapTable ref={componentRef}
+                                            id="table-resize"
+                                                selectRow={selectRow}
+                                                defaultSorted={defaultSorted}
+                                                keyField='id'
+                                                hover
+                                                pagination={false}
+                                                filter={filterFactory()}
+                                                filterPosition="top"
+                                                {...props.baseProps}
+                                            />
+                                        </Collapse>
+                                    </>
+                                )
+                            }
+                        </ToolkitProvider>
+                    </InfiniteScroll>
+                </Paper>
             </div>
 
 
