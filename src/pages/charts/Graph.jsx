@@ -16,7 +16,6 @@ import {
   Bar,
   Cell,
 } from "recharts";
-import BootStrapGrid from "../tables/bootstrap_lazyloadinggrid";
 
 const data01 = [
   { name: "Group A", value: 400 },
@@ -445,11 +444,6 @@ export default class GraphCom extends PureComponent {
               </Typography>
             }
           ></CardHeader>
-          {/* <Grid container style={{ marginBottom: 40 }}>
-            <Grid item lg={12} md={12} xs={12} sm={12}></Grid>
-            <BootStrapGrid></BootStrapGrid>
-          </Grid> */}
-          <BootStrapGrid></BootStrapGrid>
         </Card>
       </>
     );

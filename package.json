@@ -24,6 +24,8 @@
     "date-fns": "^2.22.1",
     "font-awesome": "^4.7.0",
     "install": "^0.13.0",
+    "jquery": "^3.6.0",
+    "jquery-resizable-columns": "^0.2.3",
     "json-loader": "^0.5.7",
     "mui-datatables": "^3.4.1",
     "npm": "^7.15.1",
@@ -47,6 +49,7 @@
     "react-to-print": "^2.12.6",
     "react-toastify": "^6.0.8",
     "recharts": "^1.6.2",
+    "resizable-columns": "^1.0.4",
     "tinycolor2": "^1.4.1"
   },
   "scripts": {
