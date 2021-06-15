@@ -1,10 +1,9 @@
-import React, { useRef, useEffect } from "react";
 import { makeStyles } from "@material-ui/styles";
-import Widget from "../../components/Widget/Widget";
-import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
+import React from "react";
 import BootstrapTable from "react-bootstrap-table-next";
+import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { products, init, LazyLoadingColumns } from "./FilterWidget/data.json";
+import { init, LazyLoadingColumns, products } from "./FilterWidget/data.json";
 const useStyles = makeStyles((theme) => ({
   tableOverflow: {
     overflow: "auto",
@@ -23,17 +22,17 @@ export default function BootstrapTableGrid() {
     },
   ];
   const fetchMoreData = () => {
-    var abc;
+    var lazyData;
     if (prod.length >= products.length) {
       sethasMore(false);
       console.log("sethasMore value change", hasMore);
       return;
     } else {
-      abc = products.slice(prod.length, prod.length + 15);
-      console.log("abc---", abc);
+      lazyData = products.slice(prod.length, prod.length + 15);
+      console.log("abc---", lazyData);
     }
     setTimeout(() => {
-      setprod((prod) => prod.concat(abc));
+      setprod((prod) => prod.concat(lazyData));
     }, 1500);
   };
 

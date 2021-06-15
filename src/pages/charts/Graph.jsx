@@ -441,7 +441,7 @@ export default class GraphCom extends PureComponent {
                 gutterBottom
                 color="primary"
               >
-                Lazy loading Components
+                Lazy Loading Component
               </Typography>
             }
           ></CardHeader>
