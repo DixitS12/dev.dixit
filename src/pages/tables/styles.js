@@ -60,4 +60,8 @@ export default makeStyles((theme) => ({
   expandOpen: {
     transform: "rotate(180deg)",
   },
+  actionbody: {
+    overflowY: "scroll",
+    height: "38rem",
+}
 }));

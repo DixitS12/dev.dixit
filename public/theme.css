@@ -115,7 +115,7 @@ body {
 }
 .bg-light-primary {
   color: #3699ff !important;
-  background-color: #e1f0ff;
+  background-color: #e1f0ff !important;
 }
 .bg-light-success {
   color: #1bc5bd !important;
@@ -222,4 +222,7 @@ legend {
 .react-bootstrap-table td > .selection-input-4, .react-bootstrap-table th > .selection-input-4 {
   margin-left: 0.8rem !important;
   margin-right: 0.7rem !important;
+}
+.MuiInputLabel-outlined.MuiInputLabel-shrink {
+  transform: translate(16px, 1px) scale(0.75) !important;
 }

@@ -39,6 +39,7 @@ const structure = [
   */},
   { id: 2, label: "Tables", link: "/app/tables", icon: <TableIcon /> },
   { id: 2, label: "Graph", link: "/app/graphs", icon: <BarChart /> },
+  { id: 2, label: "Example", link: "/app/example", icon: '' },
   {/*
     id: 3,
     label: "Notifications",

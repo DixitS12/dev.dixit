@@ -8,7 +8,6 @@ import {
 import classnames from "classnames";
 import {Box, IconButton, Link} from '@material-ui/core'
 import Icon from '@mdi/react'
-
 //icons
 import {
   mdiFacebook as FacebookIcon,
@@ -28,7 +27,7 @@ import Dashboard from "../../pages/dashboard";
 import Typography from "../../pages/typography";
 import Notifications from "../../pages/notifications";
 import Maps from "../../pages/maps";
-import Tables from "../../pages/tables";
+import Tables from "../../pages/tables/Tables";
 import Icons from "../../pages/icons";
 import Charts from "../../pages/charts";
 import Graphs from "../../pages/charts/Graph";
@@ -58,6 +57,7 @@ function Layout(props) {
               <Route path="/app/typography" component={Typography} />
               <Route path="/app/tables" component={Tables} />
               <Route path="/app/graphs" component={Graphs} />
+              
               <Route path="/app/notifications" component={Notifications} />
               <Route
                 exact

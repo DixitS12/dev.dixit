@@ -98,6 +98,7 @@ export default function FilterWidget() {
         onClose={handleClose}
       >
         <form onSubmit={handleFilterSubmit} className={classes.widgetBody}>
+        <div  id="action-body" className={classes.actionbody}>
           {
             columns
               ?
@@ -107,30 +108,37 @@ export default function FilterWidget() {
               :
               []
           }
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            className={classes.mr_one}
-          >
-            Search
-              </Button>
-          <Button
-            type="reset"
-            variant="contained"
-            color="secondary"
-            className={classes.mr_one}
-          >
-            Reset
-              </Button>
-          <Button
-            type="reset"
-            variant="contained"
-            color="danger"
-            onClick={handleClose}
-          >
-            Cancel
-              </Button>
+           </div>
+          <div id="action-button">
+
+
+            <Button
+              type="reset"
+              variant="contained"
+              color="danger"
+              className={classes.mr_one}
+              onClick={handleClose}
+            >
+              Cancel
+            </Button>
+
+            <Button
+              type="reset"
+              variant="contained"
+              color="secondary"
+              className={classes.mr_one}
+            >
+              Reset
+            </Button>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+
+            >
+              Search
+            </Button>
+          </div>
         </form>
       </Popover>
     </React.Fragment>

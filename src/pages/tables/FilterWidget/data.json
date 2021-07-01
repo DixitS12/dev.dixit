@@ -130,7 +130,44 @@
       "CaseTypeName": "Acknowledgment",
       "CaseOwnerDisplayName": "Vijay Prajapati",
       "CaseCreatedDate": "2021-04-08T07:06:15.697",
-      "CaseDue": "08/31/2021"
+      "CaseDue": "08/31/2021",
+      "attchement": [
+        {
+          "datatime": "june 28,2021 3:47 pm",
+          "user": "Dixit Solanki",
+          "type": "word",
+          "url": "https://Cases.BoxerProperty.com/DownloadFile.aspx?CaseFileID=2795386&amp;View=Y&amp;FileName=1300_B236_3.jpg",
+          "id": "01"
+        },
+        {
+          "datatime": "june 29,2021 3:47 pm",
+          "user": "Arpan Desai",
+          "type": "pdf",
+          "url": "https://Cases.BoxerProperty.com/DownloadFile.aspx?CaseFileID=2795386&amp;View=Y&amp;FileName=1300_B236_3.jpg",
+          "id": "02"
+        },
+        {
+          "datatime": "june 30,2021 3:47 pm",
+          "user": "Vijay Prajapati",
+          "type": "word",
+          "url": "https://Cases.BoxerProperty.com/DownloadFile.aspx?CaseFileID=2795386&amp;View=Y&amp;FileName=1300_B236_3.jpg",
+          "id": "03"
+        }
+      ],
+      "gallary": [
+        {
+          "url": "https://Cases.BoxerProperty.com/DownloadFile.aspx?CaseFileID=2795386&amp;View=Y&amp;FileName=1300_B236_3.jpg",
+          "id": "01"
+        },
+        {
+          "url": "https://Cases.BoxerProperty.com/DownloadFile.aspx?CaseFileID=2795386&amp;View=Y&amp;FileName=1300_B236_3.jpg",
+          "id": "02"
+        },
+        {
+         "url": "https://Cases.BoxerProperty.com/DownloadFile.aspx?CaseFileID=2795386&amp;View=Y&amp;FileName=1300_B236_3.jpg",
+          "id": "03"
+        }
+      ]
     },
     {
       "id": 2,
@@ -615,7 +652,56 @@
       "CaseTypeName": "Acknowledgment",
       "CaseOwnerDisplayName": "Vijay Prajapati",
       "CaseCreatedDate": "2021-04-08T07:06:15.697",
-      "CaseDue": "08/31/2021"
+      "CaseDue": "08/31/2021",
+      "attchement": [
+        {
+          "datatime": "june 28,2021 3:47 pm",
+          "user": "Dixit Solanki",
+          "type": "image",
+          "url": "http://www.stemmonsservices.com/wp-content/uploads/2020/06/img1.jpg",
+          "file_name":"dekstop.jpg",
+          "id": "01"
+        },
+        {
+          "datatime": "june 29,2021 3:47 pm",
+          "user": "Arpan Desai",
+          "type": "pdf",
+          "url": "https://www.tutorialspoint.com/reactjs/reactjs_tutorial.pdf",
+          "file_name":"react.pdf",
+          "id": "02"
+        },
+        {
+          "datatime": "june 30,2021 3:47 pm",
+          "user": "Vijay Prajapati",
+          "type": "word",
+          "url": "https://cases.stemmons.com//DownloadFile.aspx?CaseFileID=98031&View=Y&FileName=List_Component_5-11-2021.docx",
+          "file_name":"list_component.docx",
+          "id": "03"
+        },
+        {
+          "datatime": "june 30,2021 3:47 pm",
+          "user": "Dixit Solanki",
+          "type": "xlsx",
+          "url": "https://file-examples-com.github.io/uploads/2017/02/file_example_XLS_10.xls",
+          "file_name":"data.xlsx",
+          "id": "03"
+        }
+        
+      ],
+      "gallary": [
+        {
+          "url": "https://Cases.BoxerProperty.com/DownloadFile.aspx?CaseFileID=2795386&amp;View=Y&amp;FileName=1300_B236_3.jpg",
+          "id": "01"
+        },
+        {
+          "url": "https://Cases.BoxerProperty.com/DownloadFile.aspx?CaseFileID=2795386&amp;View=Y&amp;FileName=1300_B236_3.jpg",
+          "id": "02"
+        },
+        {
+         "url": "https://Cases.BoxerProperty.com/DownloadFile.aspx?CaseFileID=2795386&amp;View=Y&amp;FileName=1300_B236_3.jpg",
+          "id": "03"
+        }
+      ]
     },
     {
       "id": 2,
