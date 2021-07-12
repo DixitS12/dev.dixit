@@ -1,130 +1,109 @@
 {
   "columns": [
     {
-      "component": "input",
-      "name": "case_id",
-      "label": "Case ID",
-      "type": "text",
-      "required": true,
-      "id": "01"
-    },
-    {
-      "component": "input",
-      "name": "case_type",
-      "label": "Case Type",
-      "type": "text",
-      "required": true,
-      "id": "02"
-    },
-    {
-      "component": "input",
-      "name": "title",
-      "label": "Title",
-      "type": "text",
-      "required": true,
-      "id": "03"
-    },
-    {
-      "component": "date",
-      "name": "due_date",
-      "label": "Due Date",
-      "type": "date",
-      "required": true,
-      "id": "04"
-    },
-    {
-      "component": "select",
-      "name": "status",
-      "label": "Status",
-      "type": "select",
-      "required": true,
-      "id": "04"
-    },
-    {
-      "component": "input",
-      "name": "owned_by",
-      "label": "Owned By",
-      "type": "text",
-      "required": true,
-      "id": "05"
-    },
-    {
-      "component": "input",
-      "name": "assign_to",
-      "label": "Assign To",
-      "type": "text",
-      "required": true,
-      "id": "05"
-    },
-    {
-      "component": "date",
-      "name": "created_date",
-      "label": "Created Date",
-      "type": "date",
-      "required": true,
-      "id": "04"
-    },
-    {
-      "component": "input",
-      "name": "created_by",
-      "label": "Created By",
-      "type": "text",
-      "required": true,
-      "id": "05"
-    },
-    {
-      "component": "input",
-      "name": "modified",
-      "label": "Modified",
-      "type": "text",
-      "required": true,
-      "id": "05"
-    },
-    {
-      "component": "input",
-      "name": "modify_by",
-      "label": "Modify By",
-      "type": "text",
-      "required": true,
-      "id": "05"
-    }
-  ],
-
-  "LazyLoadingColumns":[
-    {
+      "id": "01",
       "dataField": "id",
-      "text": "Id",
-      "sort": true,
-      "align": "center",
-      "headerAlign": "center"
-    },
-    {
-      "dataField": "CaseTypeName",
-      "text": "Case Type Name",
-      "sort": true,
-      "align": "center",
-      "headerAlign": "center"
-    },
-    {
-      "dataField": "CaseOwnerDisplayName",
-      "text": "Owner Name",
-      "sort": true
-    },
-    { "dataField": "CaseCreatedDate", "text": "Created Date", "sort": false },
-    {
-      "dataField": "CaseDue",
-      "text": "Case Due",
-      "sort": false
-    },
-    {
-      "text": "Action",
+      "text": "ID",
       "align": "center",
       "headerAlign": "center",
-      "csvExport": false
+      "csvExport": true,
+      "type": "text",
+      "sort": true,
+      "required": true,
+      "hidden": false,
+      "is_filter": true,
+      "is_hide_show": true
+    },
+    {
+      "id": "02",
+      "dataField": "",
+      "text": "",
+      "align": "center",
+      "headerAlign": "center",
+      "type": "image",
+      "csvExport": false,
+      "sort": false,
+      "required": false,
+      "hidden": false,
+      "is_col_hidden": true,
+      "is_filter": false,
+      "is_hide_show": false,
+      "is_formatter": "attchment"
+    },
+    {
+      "id": "03",
+      "dataField": "CaseTypeName",
+      "text": "Value Text",
+      "align": "left",
+      "headerAlign": "left",
+      "type": "select",
+      "csvExport": true,
+      "sort": true,
+      "required": false,
+      "hidden": false,
+      "is_filter": true,
+      "is_hide_show": true,
+      "is_formatter": "badge",
+      "control_value": [
+        {
+          "value": "tranning",
+          "text": "Training",
+          "id": "01"
+        },
+        {
+          "value": "acknowledgment",
+          "text": "Acknowledgment",
+          "id": "02"
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "dataField": "CaseOwnerDisplayName",
+      "text": "Owner Name",
+      "align": "left",
+      "headerAlign": "left",
+      "type": "text",
+      "csvExport": true,
+      "sort": true,
+      "required": true,
+      "hidden": false,
+      "is_filter": true,
+      "is_hide_show": true,
+      "is_formatter": "nameEmail"
+    },
+    {
+      "id": "04",
+      "dataField": "CaseCreatedDate",
+      "text": "Created Date",
+      "align": "center",
+      "headerAlign": "center",
+      "type": "date",
+      "csvExport": true,
+      "sort": false,
+      "required": false,
+      "hidden": false,
+      "is_filter": true,
+      "is_hide_show": true,
+      "is_formatter": "date"
+    },
+    {
+      "id": "05",
+      "dataField": "CaseDue",
+      "text": "Case Date",
+      "align": "center",
+      "headerAlign": "center",
+      "type": "date",
+      "csvExport": true,
+      "sort": false,
+      "required": false,
+      "hidden": false,
+      "is_filter": true,
+      "is_hide_show": true
     }
+    
   ],
-
-  "products" :[
+  "products": [
     {
       "id": 1,
       "CaseTypeName": "Acknowledgment",
@@ -154,17 +133,17 @@
           "id": "03"
         }
       ],
-      "gallary": [
+      "images": [
         {
-          "url": "https://Cases.BoxerProperty.com/DownloadFile.aspx?CaseFileID=2795386&amp;View=Y&amp;FileName=1300_B236_3.jpg",
+          "url": "https://picsum.photos/id/1018/1000/600/",
           "id": "01"
         },
         {
-          "url": "https://Cases.BoxerProperty.com/DownloadFile.aspx?CaseFileID=2795386&amp;View=Y&amp;FileName=1300_B236_3.jpg",
+          "url": "https://picsum.photos/id/1015/1000/600/",
           "id": "02"
         },
         {
-         "url": "https://Cases.BoxerProperty.com/DownloadFile.aspx?CaseFileID=2795386&amp;View=Y&amp;FileName=1300_B236_3.jpg",
+          "url": "https://picsum.photos/id/1019/1000/600/",
           "id": "03"
         }
       ]
@@ -635,7 +614,6 @@
       "CaseCreatedDate": "2021-04-08T07:06:15.697",
       "CaseDue": "08/31/2021"
     },
-    
     {
       "key": 62,
       "id": 62,
@@ -645,8 +623,7 @@
       "CaseDue": "08/31/2021"
     }
   ],
-  
-  "init" : [
+  "init": [
     {
       "id": 1,
       "CaseTypeName": "Acknowledgment",
@@ -659,7 +636,7 @@
           "user": "Dixit Solanki",
           "type": "image",
           "url": "http://www.stemmonsservices.com/wp-content/uploads/2020/06/img1.jpg",
-          "file_name":"dekstop.jpg",
+          "file_name": "dekstop.jpg",
           "id": "01"
         },
         {
@@ -667,7 +644,7 @@
           "user": "Arpan Desai",
           "type": "pdf",
           "url": "https://www.tutorialspoint.com/reactjs/reactjs_tutorial.pdf",
-          "file_name":"react.pdf",
+          "file_name": "react.pdf",
           "id": "02"
         },
         {
@@ -675,7 +652,7 @@
           "user": "Vijay Prajapati",
           "type": "word",
           "url": "https://cases.stemmons.com//DownloadFile.aspx?CaseFileID=98031&View=Y&FileName=List_Component_5-11-2021.docx",
-          "file_name":"list_component.docx",
+          "file_name": "list_component.docx",
           "id": "03"
         },
         {
@@ -683,22 +660,24 @@
           "user": "Dixit Solanki",
           "type": "xlsx",
           "url": "https://file-examples-com.github.io/uploads/2017/02/file_example_XLS_10.xls",
-          "file_name":"data.xlsx",
+          "file_name": "data.xlsx",
           "id": "03"
         }
-        
       ],
       "gallary": [
         {
-          "url": "https://Cases.BoxerProperty.com/DownloadFile.aspx?CaseFileID=2795386&amp;View=Y&amp;FileName=1300_B236_3.jpg",
+          "url": "https://picsum.photos/id/1018/1000/600/",
+          "title": "Image-1",
           "id": "01"
         },
         {
-          "url": "https://Cases.BoxerProperty.com/DownloadFile.aspx?CaseFileID=2795386&amp;View=Y&amp;FileName=1300_B236_3.jpg",
+          "url": "https://picsum.photos/id/1015/1000/600/",
+          "title": "Image-2",
           "id": "02"
         },
         {
-         "url": "https://Cases.BoxerProperty.com/DownloadFile.aspx?CaseFileID=2795386&amp;View=Y&amp;FileName=1300_B236_3.jpg",
+          "url": "https://picsum.photos/id/1019/1000/600/",
+          "title": "Image-3",
           "id": "03"
         }
       ]

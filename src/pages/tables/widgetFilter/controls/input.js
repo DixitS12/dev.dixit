@@ -8,9 +8,9 @@ export default function CustomTextField(props) {
     var required = props.field.required;
     return (
         <TextField
-            name={String(props.field.name ? props.field.name : 'name')}
+            name={String(props.field.dataField)}
             id={String(props.field.id ? props.field.id : 0)}
-            label={props.field.label ? props.field.label : 'label'}
+            label={props.field.text ? props.field.text : 'label'}
             required={false}
             fullWidth={true}
             type={props.field.type ? props.field.type : 'text'}

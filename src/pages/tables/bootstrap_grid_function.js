@@ -1,22 +1,31 @@
 import React from 'react';
+import { Typography } from "@material-ui/core";
 import logo from "./image/011-boy-5.svg";
-import WidgetDocument from "./WidgetDocument/widgetdocument";
+import WidgetDocument from "./widgetDocument/widgetdocument";
+import WidgetGallary from "./widgetGallary/widgetgallary";
+import WidgetColumnHide from "./widgetColumnHide/column_hide";
+import WidgetExport from "./widgetExport/widgetexport";
+import { imagesContext } from './commonContext/context';
+// Inner Function
+import { columnsContext } from "./commonContext/context";
 export function nameFormatter(cell, row) {
+
+
 
     if (row.CaseTypeName === "Training") {
         return (
-            <div className="">
-                <span className="badge bg-light-primary">
+           
+              <Typography>
                     {row.CaseTypeName}
-                </span>
-            </div>
+                </Typography>
+          
         );
     } else {
         return (
-            <div className="">
-                <span className="badge bg-light-success">
-                    {row.CaseTypeName}
-                </span></div>
+            <Typography>
+              {row.CaseTypeName}
+           </Typography>
+          
 
         );
     }
@@ -41,12 +50,36 @@ export function ownernameFormatter(cell, row) {
         </div>
     );
 }
-
+export const MyExportCSV = (props) => {
+    const handleClick = () => {
+        props.onExport();
+    };
+    return (
+        <React.Fragment>
+            <WidgetExport onExport={props.onExport} />
+        </React.Fragment>
+    );
+};
 export function attchmentFormatter(cell, row) {
+
     return (
         row.attchement &&
         <React.Fragment>
             <WidgetDocument attchement={row.attchement} />
+            <imagesContext.Provider value={row.gallary}>
+                <WidgetGallary />
+            </imagesContext.Provider>
+
+
         </React.Fragment>
     );
 }
+  export const CustomToggleList = ({ columns, onColumnToggle, toggles }) => (
+
+        <columnsContext.Provider value={columns}>
+            <WidgetColumnHide color="secondary" onColumnToggle={onColumnToggle} />
+        </columnsContext.Provider>
+
+
+    );
+

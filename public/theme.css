@@ -226,3 +226,9 @@ legend {
 .MuiInputLabel-outlined.MuiInputLabel-shrink {
   transform: translate(16px, 1px) scale(0.75) !important;
 }
+
+#action-body {
+  display: flex;
+  max-height: calc(100% - 64px);
+  flex-direction: column;
+}

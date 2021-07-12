@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Grid,
   Popover,
@@ -8,19 +8,20 @@ import {
   InputLabel,
   MenuItem,
   TextField,
-  Typography
+  Typography,
+  Box
 } from "@material-ui/core";
 import { Search, FilterList } from '@material-ui/icons';
-import Select from "@material-ui/core/Select";
 import useStyles from "../styles";
-import * as notification from "./toast";
+import * as notification from "../toast";
+import { flexbox } from '@material-ui/system';
 
-import { columns } from "./data.json";
 import CustomTextField from "./controls/input";
 import MaterialUIPickers from "./controls/date_picker";
 import CustomSelect from "./controls/select";
 import Tooltip from '@material-ui/core/Tooltip';
-export default function FilterWidget() {
+
+export default function FilterWidget({ columns }) {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   var classes = useStyles();
@@ -55,9 +56,8 @@ export default function FilterWidget() {
 
   // json data for dynamic column
   const fieldHandler = (field) => {
-
-    switch (field.component) {
-      case "input":
+    switch (field.type) {
+      case "text":
         return (
           <CustomTextField field={field} />
         );
@@ -71,12 +71,14 @@ export default function FilterWidget() {
         );
       default: return (
         <Typography variant="h6" gutterBottom>
-          {field.component} control not bind.
+          {field.type + ' of ' + field.dataField} control not bind.
         </Typography>
       );
     }
   }
-
+  var style = {
+    'marginBottom': '1rem',
+  }
   return (
     <React.Fragment>
       <Tooltip title="Filter Search"><span> <IconButton
@@ -98,46 +100,47 @@ export default function FilterWidget() {
         onClose={handleClose}
       >
         <form onSubmit={handleFilterSubmit} className={classes.widgetBody}>
-        <div  id="action-body" className={classes.actionbody}>
-          {
-            columns
-              ?
-              columns.map((field, index) => (
-                <div key={index}>{fieldHandler(field, index)}</div>
-              ))
-              :
-              []
-          }
-           </div>
+          <div id="action-body" className={classes.actionbody}>
+            {
+              columns
+                ?
+                columns.map((field, index) => (
+                  field.is_filter && <div key={index} style={{ style }}>{fieldHandler(field, index)}</div>
+
+                ))
+                :
+                []
+            }
+          </div>
           <div id="action-button">
+            <Box display="flex " justifyContent="space-between">
+              <Button
+                type="reset"
+                variant="contained"
+                color="danger"
+                className={classes.mr_one}
+                onClick={handleClose}
+              >
+                Cancel
+              </Button>
 
+              <Button
+                type="reset"
+                variant="contained"
+                color="secondary"
+                className={classes.mr_one}
+              >
+                Reset
+              </Button>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
 
-            <Button
-              type="reset"
-              variant="contained"
-              color="danger"
-              className={classes.mr_one}
-              onClick={handleClose}
-            >
-              Cancel
-            </Button>
-
-            <Button
-              type="reset"
-              variant="contained"
-              color="secondary"
-              className={classes.mr_one}
-            >
-              Reset
-            </Button>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-
-            >
-              Search
-            </Button>
+              >
+                Search
+              </Button>
+            </Box>
           </div>
         </form>
       </Popover>

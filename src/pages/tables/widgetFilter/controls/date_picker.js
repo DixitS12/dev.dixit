@@ -20,10 +20,10 @@ export default function MaterialUIPickers(props) {
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <KeyboardDatePicker
          className={classes.mb_one}
-          name={props.field.name}
+          name={props.field.dataField}
           fullWidth={true}
           id={"date-picker-dialog_"+props.field.id}
-          label={props.field.label}
+          label={props.field.text}
           format="dd/mm/yyyy"
           value={selectedDate}
           onChange={handleDateChange}

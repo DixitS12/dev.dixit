@@ -8,18 +8,14 @@ import {
 } from "@material-ui/core";
 import Tooltip from '@material-ui/core/Tooltip';
 import { CloudDownload } from '@material-ui/icons';
-import ViewColumnIcon from '@material-ui/icons/ViewColumn';
 import jsPDF from 'jspdf'
 import autoTable from 'jspdf-autotable'
-// styles
-import useStyles from "./styles";
 
 export default function WidgetColumnHide({
   columns,
   onExport,
   ...props
 }) {
-  var classes = useStyles();
 
   // local
   var [moreButtonRef, setMoreButtonRef] = useState(null);
@@ -29,14 +25,14 @@ export default function WidgetColumnHide({
   }, [columns])
 
 
-const handlePdfClick = () => {
-  const doc = new jsPDF()
-  autoTable(doc, { html: '#table-resize' })
-  doc.save('table.pdf')
-}
-const handleClick = () => {
-  onExport();
-};
+  const handlePdfClick = () => {
+    const doc = new jsPDF()
+    autoTable(doc, { html: '#table-resize' })
+    doc.save('table.pdf')
+  }
+  const handleClick = () => {
+    onExport();
+  };
   return (
 
 

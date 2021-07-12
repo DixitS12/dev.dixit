@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-  Paper,
   IconButton,
   Menu,
   MenuItem,
@@ -11,22 +10,18 @@ import {
 import Tooltip from '@material-ui/core/Tooltip';
 import { MoreVert as MoreIcon, Cancel, AddOutlined, ArrowDownward, KeyboardTabOutlined, ArrowRightAltOutlined, CheckCircleOutlineOutlined, CloseOutlined, ExitToAppOutlined, NotificationsActiveOutlined } from "@material-ui/icons";
 import * as notification from "../toast";
-import AlertDialogSlide from './confirm_dialog';
-// styles
-import useStyles from "./styles";
 
-export default function Widget({
+export default function WidgetActions({
   isSelected,
   isSelectedRow,
   selectedAction,
   setSelectedAction,
 }) {
-  var classes = useStyles();
+
 
   // local
   var [moreButtonRef, setMoreButtonRef] = useState(null);
   var [isMoreMenuOpen, setMoreMenuOpen] = useState(false);
-  const [open, setOpen] = React.useState(false);
 
   useEffect(() => {
     if (selectedAction) {
@@ -43,36 +38,25 @@ export default function Widget({
 
   const handleSelectedAction = (selected_action) => {
     if (isSelected === true) {
-      // setOpen(true);
       setMoreMenuOpen(false)
       setSelectedAction(selected_action)
-      // fire api
     } else {
       notification.toast.error(" Please Select Row..!!!");
     }
   };
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
   return (
     <React.Fragment>
-      {/* <AlertDialogSlide
-        open={open}
-        handleClose={handleClose}
-
-      /> */}
-      <Box  display="inline-flex">
+      <Box display="inline-flex">
         {
           selectedAction
             ?
             <Typography>
-              <Fab 
+              <Fab
                 variant={selectedAction}
                 size="medium"
                 color="dark"
                 aria-label="add"
                 boxShadow={0}
-                className={classes.margin}
               >
                 <Cancel style={{ 'marginRight': '8px' }} onClick={(e) => setSelectedAction("")} />
                 {selectedAction}
@@ -82,15 +66,15 @@ export default function Widget({
             null
 
         }
-        <Tooltip title="Hide/Show Columns"><span> 
+        <Tooltip title="Hide/Show Columns"><span>
           <IconButton onClick={() => setMoreMenuOpen(true)}
-          buttonRef={setMoreButtonRef}
-          aria-label="Hide/Show Columns"
-        >
+            buttonRef={setMoreButtonRef}
+            aria-label="Hide/Show Columns"
+          >
 
-          <MoreIcon style={{ cursor: "pointer" }} />
+            <MoreIcon style={{ cursor: "pointer" }} />
 
-        </IconButton></span>
+          </IconButton></span>
 
         </Tooltip>
 

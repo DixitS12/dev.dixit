@@ -1,4 +1,4 @@
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import {
     FormControl,
     Select,
@@ -13,9 +13,9 @@ export default function CustomSelect(props) {
     const [drpValue, setDrpValue] = useState("");
     var classes = useStyles();
 
-const handleChange = (e) =>{
-    setDrpValue(e);
-}
+    const handleChange = (e) => {
+        setDrpValue(e);
+    }
     return (
         <FormControl
             fullWidth={true}
@@ -23,20 +23,28 @@ const handleChange = (e) =>{
             className={classes.mb_one}
         >
             <InputLabel id="demo-controlled-open-select-label">
-             Status
-           </InputLabel>
+                {props.field.text ? props.field.text : 'Select'}
+            </InputLabel>
             <Select
                 className="input-dropdown"
                 name={props.field.name}
-                label={props.field.label}
+                label={props.field.text}
                 value={drpValue}
                 onChange={(e) =>
                     handleChange(e.target.value)
                 }
             >
-                <MenuItem value="active">Active</MenuItem>
-                <MenuItem value="inactive">InActive</MenuItem>
-                <MenuItem value="both">both</MenuItem>
+               {
+                  props.field.control_value.length > 0
+                  ?
+
+                   props.field.control_value.map((option,index)=>(
+                    <MenuItem value={option.value} id={index}>{option.text}</MenuItem>
+                   ))
+                   :
+                   null
+               }
+
             </Select>
         </FormControl>
 

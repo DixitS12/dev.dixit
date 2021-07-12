@@ -7,38 +7,38 @@ import {
   Badge,
   Card,
   CardHeader,
-  CardActionArea,
   CardActions,
-  CardContent,
   Avatar,
-  Divider,
   colors,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Tooltip from '@material-ui/core/Tooltip';
 import { Description, Search, CloudDownload, Favorite, Share } from '@material-ui/icons';
-
+import { yellow } from '@material-ui/core/colors';
 // styles
 const useStyles = makeStyles((theme) => ({
   cardBody: {
-    marginBottom:'1rem',
+    marginBottom: '1rem',
     backgroundColor: '#e1f0ff',
     "&:hover": {
       backgroundColor: '#f4faff',
     },
   },
-  
+  orange: {
+    color: theme.palette.getContrastText(yellow[500]),
+    backgroundColor: yellow[500],
+  },
   widgetBody: {
-    padding:'.8rem',
-    paddingBottom:'0'
+    padding: '.8rem',
+    paddingBottom: '0'
   },
-  cardHeader:{
-    paddingBottom:'0',
-    paddingTop:'.5rem',
+  cardHeader: {
+    paddingBottom: '0',
+    paddingTop: '.5rem',
   },
-  cardAction:{
-    paddingTop:'.2rem',
-    paddingBottom:'0',
+  cardAction: {
+    paddingTop: '.2rem',
+    paddingBottom: '0',
   },
   avatar: {
     backgroundColor: colors.yellow[500]
@@ -50,6 +50,7 @@ export default function WidgetDocument({
 }) {
   var classes = useStyles();
 
+  
   // local
   var [moreButtonRef, setMoreButtonRef] = useState(null);
   var [isMoreMenuOpen, setMoreMenuOpen] = useState(false);
@@ -58,9 +59,10 @@ export default function WidgetDocument({
   }, [attchement])
 
   const handleOpenNewTab = (e, file) => {
+    e.stopPropagation();
     window.open(file.url, "_blank")
   }
-  const downloadImageExcel = async (imageSrc,file_name) => {
+  const downloadImageExcel = async (imageSrc, file_name) => {
     const image = await fetch(imageSrc)
     const imageBlog = await image.blob()
     const imageURL = URL.createObjectURL(imageBlog)
@@ -74,7 +76,7 @@ export default function WidgetDocument({
 
 
   const handleCommonDownload = (e, file) => {
-    e.preventDefault();
+    e.stopPropagation();
     if (file.type === "pdf" || file.type === "word") {
       fetch(file.url, {
         method: "GET",
@@ -94,21 +96,29 @@ export default function WidgetDocument({
         });
     }
     else if (file.type === "xlsx" || file.type === "image") {
-      downloadImageExcel(file.url,file.file_name)
+      downloadImageExcel(file.url, file.file_name)
     }
   }
+  const isOpenAttchmentsOpen = (e,value) =>{
+    e.stopPropagation();
+    setMoreMenuOpen(value)
+  }
+
   return (
 
 
     <React.Fragment>
       <Tooltip title="Download">
         <IconButton aria-label="Download"
-          onClick={() => setMoreMenuOpen(true)}
+          onClick={(e) => isOpenAttchmentsOpen(e,true)}
           buttonRef={setMoreButtonRef}
         >
 
+
           <Badge color="primary" badgeContent={attchement.length}>
-            <Description />
+            <Avatar alt="Remy Sharp" variant="round" className={classes.orange}>
+              <Description />
+            </Avatar>
           </Badge>
         </IconButton>
       </Tooltip>
@@ -117,27 +127,27 @@ export default function WidgetDocument({
         id="widget-download"
         open={isMoreMenuOpen}
         anchorEl={moreButtonRef}
-        onClose={() => setMoreMenuOpen(false)}
+        onClose={(e) => isOpenAttchmentsOpen(e,false)}
         disableAutoFocusItem
 
       >
         <div className={classes.widgetBody}>
-          <Typography variant="h5" color="primary" style={{marginBottom:'.8rem'}}> Notes Attchments </Typography>
-          
+          <Typography variant="h5" color="primary" style={{ marginBottom: '.8rem' }}> Notes Attchments </Typography>
+
           {
             attchement.map((data) =>
             (
               <Card className={classes.cardBody}>
                 <CardHeader className={classes.cardHeader}
                   avatar={
-                    <Avatar alt={data.user} src="/static/images/avatar/1.jpg"  className={'bg-light-danger'}/>
+                    <Avatar alt={data.user} src="/static/images/avatar/1.jpg" className={'bg-light-danger'} />
                   }
                   title={data.user}
                   subheader={data.datatime}
                 />
-              
+
                 <CardActions disableSpacing className={classes.cardAction}>
-                  <IconButton aria-label="Search" onClick={(e) => handleOpenNewTab(e,data)} >
+                  <IconButton aria-label="Search" onClick={(e) => handleOpenNewTab(e, data)} >
                     <Search />
                   </IconButton>
                   <Button aria-label="Download" onClick={(e) => handleCommonDownload(e, data)}>

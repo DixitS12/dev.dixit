@@ -3,23 +3,30 @@ import React, { useEffect, useState } from "react";
 import { Grid } from "@material-ui/core";
 import axios from 'axios';
 import BootstrapTableGrid from './bootstrap_grid';
-
+import * as config from './config';
 export default function Tables() {
 
   const [list, setList] = useState([]);
 
   const getCaseList = async () => {
-    const config = {
-      url: "http://10.17.3.127/api/centralhome/GetCasesList",
-      method: "get"
-    }
-    await axios(config)
-      .then(response => {
 
-        if (response?.data?.length) {
-          setList(response.data)
-        }
-      })
+    try {
+      const data = {
+        url: config.API_URL + config.GET_CASE_DATA,
+        method: "get"
+      }
+      await axios(data)
+        .then(response => {
+
+          if (response?.data?.length) {
+            setList(response.data)
+          }
+        })
+    } catch (error) {
+      console.log(error.response);
+    }
+
+
   }
 
   useEffect(() => {

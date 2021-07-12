@@ -10,8 +10,7 @@ export default makeStyles((theme) => ({
     boxShadow: theme.customShadows.widget,
   },
   widgetBody: {
-    padding: theme.spacing(3),
-    width: "27em",
+    padding: theme.spacing(2),
   },
   noPadding: {
     padding: 0,
@@ -60,8 +59,5 @@ export default makeStyles((theme) => ({
   expandOpen: {
     transform: "rotate(180deg)",
   },
-  actionbody: {
-    overflowY: "scroll",
-    height: "38rem",
-}
+
 }));

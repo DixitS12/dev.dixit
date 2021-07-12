@@ -429,22 +429,7 @@ export default class GraphCom extends PureComponent {
           </Grid>
         </Card>
 
-        <Card style={{ marginTop: 20 }}>
-          <CardHeader
-            title={
-              <Typography
-                style={{ color: "red" }}
-                style={{ textAlign: "center" }}
-                variant="h1"
-                component="h1"
-                gutterBottom
-                color="primary"
-              >
-                Lazy Loading Component
-              </Typography>
-            }
-          ></CardHeader>
-        </Card>
+        
       </>
     );
   }
