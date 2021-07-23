@@ -4,7 +4,7 @@ import {
 } from "@material-ui/core";
 import { Refresh, ExpandMore } from '@material-ui/icons';
 import clsx from "clsx";
-import PageTitle from "../../components/PageTitle";
+import PageTitle from "./PageTitle/PageTitle";
 import WidgetActions from "./widgetAction/widget";
 import FilterWidget from "./widgetFilter/filterlist";
 import logo from "./image/011-boy-5.svg";
@@ -14,7 +14,7 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import filterFactory, { textFilter, selectFilter } from 'react-bootstrap-table2-filter';
-import { products, init, columns as table_col, columns as table_columns } from "./data.json";
+
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -26,6 +26,8 @@ import { nameFormatter, dateFormatter, ownernameFormatter, attchmentFormatter, M
 import { toDate } from "date-fns";
 function BootstrapTableGrid(props) {
 
+    const { init_products, products, columns  } = props;
+    
     const componentRef = useRef();
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
@@ -35,7 +37,7 @@ function BootstrapTableGrid(props) {
     const [expanded, setExpanded] = React.useState(true);
     const { SearchBar, ClearSearchButton } = Search;
     const [hasMore, sethasMore] = React.useState(true);
-    const [prod, setprod] = React.useState(init);
+    const [prod, setprod] = React.useState(init_products);
     const [selectedAction, setSelectedAction] = React.useState("")
 
 
@@ -45,7 +47,7 @@ function BootstrapTableGrid(props) {
     }];
 
     const handleRefreshClick = () => {
-        props.getCaseList();
+  
     }
     const handleClose = () => {
         setOpen(false);
@@ -113,7 +115,7 @@ function BootstrapTableGrid(props) {
     }
 
 
-    table_columns.forEach(function (item, index, array) {
+    columns.forEach(function (item, index, array) {
 
         if (item.is_formatter) {
             item.formatter = callFormatter(item.is_formatter);
@@ -168,7 +170,7 @@ function BootstrapTableGrid(props) {
                             bootstrap4
                             keyField='id'
                             data={prod}
-                            columns={table_col}
+                            columns={columns}
                             search
                             columnToggle
                             exportCSV={{
@@ -192,7 +194,7 @@ function BootstrapTableGrid(props) {
                                                     </Hidden>
 
 
-                                                    <FilterWidget columns={table_columns}
+                                                    <FilterWidget columns={columns}
 
                                                     />
                                                     <Hidden only={['xs', 'sm']}><CustomToggleList {...props.columnToggleProps} /></Hidden>

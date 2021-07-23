@@ -19,7 +19,7 @@ import {
   ArrowBack as ArrowBackIcon,
 } from "@material-ui/icons";
 import classNames from "classnames";
-
+import Breadcrumbs from '../../../src/pages/tables/Breadcrumbs/breadcrumbs'
 // styles
 import useStyles from "./styles";
 
@@ -139,6 +139,7 @@ export default function Header(props) {
         <Typography variant="h6" weight="medium" className={classes.logotype}>
           Admin
         </Typography>
+        <Breadcrumbs />
         <div className={classes.grow} />
      
         <div

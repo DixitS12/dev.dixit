@@ -6,7 +6,7 @@ const cardStyle = {
   card: {
     cursor:'pointer',
     border: "0",
-    marginBottom: "30px",
+    marginBottom: "20px",
     borderRadius: "6px",
     color: secondary,
     background: primary,

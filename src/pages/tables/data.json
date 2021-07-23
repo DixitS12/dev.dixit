@@ -623,7 +623,7 @@
       "CaseDue": "08/31/2021"
     }
   ],
-  "init": [
+  "init_products": [
     {
       "id": 1,
       "CaseTypeName": "Acknowledgment",

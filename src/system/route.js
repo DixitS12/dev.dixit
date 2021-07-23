@@ -15,6 +15,7 @@ import Example from "../pages/tables/examples";
 import Icons from "../pages/icons";
 import Charts from "../pages/charts/Charts";
 import Graphs from "../pages/charts/Graph";
+import IframePage from "../pages/tables/iframe";
 
 const AllRoute = (
         <Switch>
@@ -22,6 +23,7 @@ const AllRoute = (
             <Route path="/app/typography" component={Typography} />
             <Route path="/app/tables" component={Tables} />
             <Route path="/app/example" component={Example} />
+            <Route path="/app/aspx" component={IframePage} />
             <Route path="/app/graphs" component={Graphs} />
 
             <Route path="/app/notifications" component={Notifications} />

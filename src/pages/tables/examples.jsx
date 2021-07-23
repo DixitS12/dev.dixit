@@ -22,6 +22,7 @@ function GallaryOne() {
   return (
     <React.Fragment>
         <ImageGallery items={images}  showLightboxThumbnails={true}  />
+  
         </React.Fragment>
   );
 }
