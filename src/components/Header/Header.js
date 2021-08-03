@@ -22,12 +22,12 @@ import classNames from "classnames";
 import Breadcrumbs from '../../../src/pages/tables/Breadcrumbs/breadcrumbs'
 // styles
 import useStyles from "./styles";
-
+import { useTranslation } from 'react-i18next';
 // components
 import { Badge, Typography, Button } from "../Wrappers";
 import Notification from "../Notification/Notification";
 import UserAvatar from "../UserAvatar/UserAvatar";
-
+import LanguageSelect from '../Localization/languageSelect';
 // context
 import {
   useLayoutState,
@@ -91,7 +91,7 @@ const notifications = [
 
 export default function Header(props) {
   var classes = useStyles();
-
+  const { t } = useTranslation();
   // global
   var layoutState = useLayoutState();
   var layoutDispatch = useLayoutDispatch();
@@ -137,11 +137,10 @@ export default function Header(props) {
           )}
         </IconButton>
         <Typography variant="h6" weight="medium" className={classes.logotype}>
-          Admin
+        {t('Admin')}
         </Typography>
-        <Breadcrumbs />
         <div className={classes.grow} />
-     
+          <LanguageSelect/>
         <div
           className={classNames(classes.search, {
             [classes.searchFocused]: isSearchOpen,

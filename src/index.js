@@ -13,7 +13,6 @@ ReactDOM.render(
   <LayoutProvider>
     <UserProvider>
       <ThemeProvider theme={Themes.default}>
-        <CssBaseline />
         <App />
       </ThemeProvider>
     </UserProvider>

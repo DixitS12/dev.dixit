@@ -1,0 +1,54 @@
+{
+    "resources": {
+        "en": {
+            "translation": {
+                "Admin": "Admin",
+                "Dashboard": "Dashboard",
+                "Tables": "Tables",
+                "Graph": "Graph",
+                "Example": "Example",
+                "Cases": "Cases"
+            }
+        },
+        "jap": {
+            "translation": {
+                "Admin": "管理者",
+                "Dashboard": "ダッシュボード",
+                "Tables": "テーブル",
+                "Graph": "グラフ",
+                "Example": "例",
+                "Cases": "ケース"
+            }
+        },
+        "hin": {
+            "translation": {
+                "Admin": "व्यवस्थापक",
+                "Dashboard": "डैशबोर्ड",
+                "Tables": "टेबल्स",
+                "Graph": "ग्राफ",
+                "Example": "उदाहरण",
+                "Cases": "मामलों"
+            }
+        },
+        "ger": {
+            "translation": {
+                "Admin": "Administratorin",
+                "Dashboard": "Tabellen",
+                "Tables": "Graph",
+                "Graph": "Beispiel",
+                "Example": "Beispiel",
+                "Cases": "Fälle"
+            }
+        },
+        "fre": {
+            "translation": {
+                "Admin": "Administratorin",
+                "Dashboard": "Tableau de bord",
+                "Tables": "Les tables",
+                "Graph": "Graphique",
+                "Example": "Exemple",
+                "Cases": "Cas"
+            }
+        }
+    }
+}

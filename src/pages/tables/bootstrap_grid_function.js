@@ -14,18 +14,18 @@ export function nameFormatter(cell, row) {
 
     if (row.CaseTypeName === "Training") {
         return (
-           
-              <Typography>
-                    {row.CaseTypeName}
-                </Typography>
-          
+
+            <Typography>
+                {row.CaseTypeName}
+            </Typography>
+
         );
     } else {
         return (
             <Typography>
-              {row.CaseTypeName}
-           </Typography>
-          
+                {row.CaseTypeName}
+            </Typography>
+
 
         );
     }
@@ -63,23 +63,36 @@ export const MyExportCSV = (props) => {
 export function attchmentFormatter(cell, row) {
 
     return (
-        row.attchement &&
+
         <React.Fragment>
-            <WidgetDocument attchement={row.attchement} />
-            <imagesContext.Provider value={row.gallary}>
-                <WidgetGallary />
-            </imagesContext.Provider>
+            {
+                row.attchement
+                    ?
+                    <WidgetDocument attchement={row.attchement} />
+                    :
+                    null
+            }
+            {
+                row.gallary
+                    ?
+                    <imagesContext.Provider value={row.gallary}>
+                        <WidgetGallary />
+                    </imagesContext.Provider>
+                    :
+                    null
+            }
+
 
 
         </React.Fragment>
     );
 }
-  export const CustomToggleList = ({ columns, onColumnToggle, toggles }) => (
+export const CustomToggleList = ({ columns, onColumnToggle, toggles }) => (
 
-        <columnsContext.Provider value={columns}>
-            <WidgetColumnHide color="secondary" onColumnToggle={onColumnToggle} />
-        </columnsContext.Provider>
+    <columnsContext.Provider value={columns}>
+        <WidgetColumnHide color="secondary" onColumnToggle={onColumnToggle} />
+    </columnsContext.Provider>
 
 
-    );
+);
 

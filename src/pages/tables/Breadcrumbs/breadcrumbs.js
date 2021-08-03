@@ -4,6 +4,7 @@ import Breadcrumbs from "@material-ui/core/Breadcrumbs";
 import Link from "@material-ui/core/Link";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import withBreadcrumbs from "react-router-breadcrumbs-hoc";
+import { useTranslation } from 'react-i18next';
 const useStyles = makeStyles((theme) => ({
     root: {
         "& > * + *": {
@@ -14,7 +15,9 @@ const useStyles = makeStyles((theme) => ({
 
 function PureBreadcrumbs(props) {
     const classes = useStyles();
+    const { t } = useTranslation();
 
+    console.log(":----props.breadcrumbs",props.breadcrumbs);
     return (
         <div className={classes.root}>
 
@@ -28,6 +31,7 @@ function PureBreadcrumbs(props) {
                         <div className="bc" key={match.url}>
                             <Link color="inherit" href={match.url || ""}>
                                 {breadcrumb}
+                                
                             </Link>
 
                         </div>

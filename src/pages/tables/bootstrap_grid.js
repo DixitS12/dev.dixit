@@ -23,11 +23,11 @@ import useStyles from "./styles";
 import CommonCard from "./card/card";
 
 import { nameFormatter, dateFormatter, ownernameFormatter, attchmentFormatter, MyExportCSV, CustomToggleList } from "./bootstrap_grid_function";
-import { toDate } from "date-fns";
+var dateFormat = require("dateformat");
 function BootstrapTableGrid(props) {
+    var _ = require('lodash');
+    const { init_products, products, columns } = props;
 
-    const { init_products, products, columns  } = props;
-    
     const componentRef = useRef();
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
@@ -43,11 +43,12 @@ function BootstrapTableGrid(props) {
 
     const defaultSorted = [{
         dataField: 'CaseTypeName',
-        order: 'asc'
+        order: 'desc'
     }];
 
     const handleRefreshClick = () => {
-  
+
+        setprod(init_products);
     }
     const handleClose = () => {
         setOpen(false);
@@ -88,7 +89,6 @@ function BootstrapTableGrid(props) {
 
 
     const callFormatter = (is_formatter) => {
-
         switch (is_formatter) {
             case "badge":
                 return (
@@ -121,41 +121,44 @@ function BootstrapTableGrid(props) {
             item.formatter = callFormatter(item.is_formatter);
         }
     });
-    // const columns = [
-    //     { dataField: 'id', text: 'Id', sort: true, align: 'center', headerAlign: 'center', align: 'center' },
-    //     {
-    //         dataField: '', text: 'Attchment', align: 'center', headerAlign: 'center', visible: false, align: 'center', formatter: attchmentFormatter, csvExport: false
-    //     },
-
-    //     {
-    //         dataField: "CaseTypeName", text: "Value Text", sort: true, align: 'left', headerAlign: 'left',
-    //         formatter: nameFormatter
-    //     },
-    //     {
-    //         dataField: "CaseOwnerDisplayName", text: "Owner Name", headerAlign: 'center', sort: true,
-    //         formatter: ownernameFormatter
-    //     },
-    //     {
-    //         dataField: "CaseCreatedDate", text: "Created Date", headerAlign: 'center', sort: false,
-
-    //         formatter: dateFormatter
-    //     },
-    //     {
-    //         dataField: "CaseDue", text: "Case Due", headerAlign: 'center', sort: false,
-    //         formatter: dateFormatter
-
-    //     },
-    // ];
     const handleTableChange = (type,
-        { page, sizePerPage, filters, sortField, sortOrder },
-    ) => {
+        { page, sizePerPage, filters, sortField, sortOrder },) => {
+
+        let dataSort = _.orderBy(prod, [sortField],
+            [sortOrder]);
+        setprod(dataSort);
         const currentIndex = (page - 1) * sizePerPage;
     };
- const handleCardcClick=()=>{
-     alert("--------click for info")
- }
+    const handleCardClick = () => {
+    }
 
- console.log("-----componentRef",componentRef);
+    //  Search
+    const MySearch = () => {
+        let input;
+        const handleClick = () => {
+            let items = products.filter(item => item.CaseOwnerDisplayName == input.value.trim() || item.CaseTypeName == input.value.trim() || item.id == input.value.trim());
+            if (!items.length) {
+                setprod([]);
+            }
+            setprod(items);
+        };
+
+    
+
+        return (
+            <div className="input-group">
+                <input
+                    id="search-bar-0"
+                    placeholder="Search.."
+                    className="form-control custome-search-field"
+                    ref={n => input = n}
+                    type="text"
+                />
+                <button className="btn btn-secondary" onClick={handleClick}>Search</button>
+            </div>
+        );
+    };
+
     return (
         <>
             <div className="ui-table react-bs-table">
@@ -183,8 +186,8 @@ function BootstrapTableGrid(props) {
                                 props => (
                                     <>
                                         <div className="st-grid-top-container">
-                                            <PageTitle title="User Case List" button={
-                                                <span>
+                                            <PageTitle title="Cases" button={
+                                                <span className="d-flex">
                                                     <Hidden only={['xs', 'sm']}>
                                                         <WidgetActions
                                                             isSelectedRow={isSelectedRow}
@@ -205,8 +208,7 @@ function BootstrapTableGrid(props) {
                                                         </IconButton>
                                                     </Tooltip>
                                                     <Hidden only={['xs', 'sm']}>  <MyExportCSV {...props.csvProps} />
-                                                        <SearchBar  {...props.searchProps} />
-                                                        <ClearSearchButton  {...props.searchProps} /> </Hidden>
+                                                        <MySearch  {...props.searchProps} /> </Hidden>
 
 
                                                     <Tooltip title="Expand/Collaps">
@@ -249,11 +251,11 @@ function BootstrapTableGrid(props) {
                                                             {
                                                                 prod.map((product, index) => (
                                                                     <Box width="100%">
-                                                                        <Link onClick={handleCardcClick}>
+                                                                        <Link onClick={handleCardClick}>
                                                                             <CommonCard
                                                                                 id={'Due Date: ' + product.CaseDue}
                                                                                 listId={'case: ' + product.id}
-                                                                                title={'Created Date: ' + toDate(product.CaseCreatedDate, 'DD/MM/YYYY')}
+                                                                                title={'Created Date: ' + dateFormat(product.CaseCreatedDate, 'DD/MM/YYYY')}
                                                                                 type={product.CaseTypeName}
                                                                                 assignTo={product.CaseOwnerDisplayName}
                                                                                 isPopOut={false}
